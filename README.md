@@ -8,7 +8,7 @@
 -DataBase Developer:Bandar Mabruk Alfaraj
 
 
-![Project Diagram and description](https://github.com/bandar2014505/Ajrni/blob/main/resources/Project%20Diagram%20and%20description.png"Project Diagram and description")
+git add Project Diagram and description
 
 
 
