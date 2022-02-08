@@ -8,7 +8,7 @@
 -DataBase Developer:Bandar Mabruk Alfaraj
 
 
-git clone Project Diagram and description
++git clone Project Diagram and description
 
 
 
