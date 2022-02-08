@@ -8,7 +8,7 @@
 -DataBase Developer:Bandar Mabruk Alfaraj
 
 
-![MyTestDiagram](https://github.com/ctiProgramming1/MyTest/blob/main/MyTestDiagram.png "MyTest Diagram")
+![MyTestDiagram](https://github.com/bandar2014505/Ajrni/blob/main/resources/Project%20Diagram%20and%20description.png"MyTest Diagram")
 
 
 
