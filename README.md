@@ -9,7 +9,7 @@
 -DataBase Developer:Bandar Mabruk Alfaraj
 
 ![ ](resources/Project%20Diagram%20and%20description.png)
-![ ](resources/ERD%20Diagram%20and%20Ajrni.png)
+![ ](resources/ERD%20Ajrni.png)
 
 
 
