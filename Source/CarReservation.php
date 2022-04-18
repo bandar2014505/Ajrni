@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-    <!-- Main Meta Rulez -->
+    <!-- Main Meta Rulez  -->
     <meta charset="UTF-8" />
     <title>Ajrni</title>
     <link rel="stylesheet" href="css/fontawesome.min.css">
