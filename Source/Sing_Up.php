@@ -11,16 +11,17 @@
 </head>
 <?php
        include 'includes/session.php';
-       $Divnote =  $fristName =	$lastName =	$Email = 	$phoneNumber =	$password	= $permissions = "";
+       $Divnote = $idNumber =   $fristName  =	$Email = 	$phoneNumber =	$password	= $permissions = "";
 
        if(strip_tags($_SERVER['REQUEST_METHOD']=="POST")){
+        $idNumber = $_POST['idNumber'];
         $fristName = $_POST['fristName'];
-        $lastName = $_POST['lastName'];
         $Email = $_POST['Email'];
         $phoneNumber = $_POST['phoneNumber'];
         $password = $_POST['password'];
         $verifyPassword = $_POST['verifyPassword'];
         $permissions = $_POST['permissions'];
+        
         if(isset($_POST['save'])){
             include 'includes/serverdb.php';
           if ($password == $verifyPassword) {
@@ -38,17 +39,11 @@
     }
     else{
     
-          $sql = "INSERT INTO users (fristName, lastName, Email, phoneNumber, password, permissions) VALUES ('$fristName', '$lastName', '$Email', '$phoneNumber', '$password','$permissions')";
+          $sql = "INSERT INTO users (idNumber,fristName, Email, phoneNumber, password, permissions) VALUES ('$idNumber','$fristName', '$Email', '$phoneNumber', '$password','$permissions')";
         $conn->query("set NAMES utf8");
         if ($conn->query($sql) === TRUE) {
-            $Divnote = '<div class="alert alert-dismissible alert-success">
-      <button type="button" class="close  pull-left" data-dismiss="alert">&times;</button>
-      
-      <a class="u-active-white u-button-style u-nav-link u-text-active-custom-color-1 u-text-hover-palette-2-base" href="sign_in.php" style="padding: 10px 20px;">تم انشاء الحساب بنجاح. اضغط هنا لتسجيل الدخول</a>
-    
-    </div>';
-    $fristName =	$lastName =	$Email =	$phoneNumber =	$password	= $verifyPassword =  $permissions = "";
-    
+            header("location: sign_in.php");
+
         }
         else {
           $Divnote = '<div class="alert alert-dismissible alert-danger">
@@ -109,7 +104,7 @@
             <div class="panel-heading">تسجيل حساب جديد</div>
                 <div class="panel-body">
 
-<div class="col-sm-12">
+<div class="col-sm-6">
                 <div class="form-group">
                     <label for="permissions">نوع الحساب</label>
                     <select class="form-control" id="permissions" name="permissions">
@@ -119,21 +114,27 @@
                 </div>
                 </div>
 
-
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="fristName">اسم الأول</label>
+                    <label for="fristName">الاسم كامل</label>
                     <input type="text" value="<?php echo $fristName;?>" class="form-control" name="fristName" required="">
                 </div>
-                </div>
+                </div>          
 
-
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="lastName">اسم الثاني</label>
-                    <input type="text" value="<?php echo $lastName;?>" class="form-control" name="lastName" required="">
+                    <label for="idNumber" id="idNumber1">السجل التجاري</label>
+                    <input type="text" value="<?php echo $idNumber;?>" class="form-control" name="idNumber" required="" minlength="10">
                 </div>
                 </div>
+
+                <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="phoneNumber">رقم الجوال</label>
+                    <input type="text" value="<?php echo $phoneNumber;?>" class="form-control" name="phoneNumber" required="">
+                </div>
+                </div>
+
                 <div class="col-sm-12">
                 <div class="form-group">
                     <label for="Email">البريد الالكتروني</label>
@@ -141,22 +142,17 @@
                 </div>
                 </div>
 
-                <div class="col-sm-12">
-                <div class="form-group">
-                    <label for="phoneNumber">رقم الجوال</label>
-                    <input type="text" value="<?php echo $phoneNumber;?>" class="form-control" name="phoneNumber" required="">
-                </div>
-                </div>
 
 
-                <div class="col-sm-12">
+
+                <div class="col-sm-6">
                 <div class="form-group">
                     <label for="password">كلمة المرور</label>
                     <input type="password" value="<?php echo $password;?>" class="form-control" name="password" minlength="8"  required="">
                 </div>
                 </div>
 
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                 <div class="form-group">
                     <label for="verifyPassword">تأكيد كلمة المرور</label>
                     <input type="password" value="" class="form-control" name="verifyPassword" minlength="8"  required="">
@@ -170,7 +166,7 @@
                     <svg width="16" height="16" fill="currentColor" class="bi bi-save2" viewBox="0 0 16 16">
                         <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v4.5h2a.5.5 0 0 1 .354.854l-2.5 2.5a.5.5 0 0 1-.708 0l-2.5-2.5A.5.5 0 0 1 5.5 6.5h2V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
                     </svg>
-تسجيل دخول</button>
+تسجيل الحساب</button>
              
              
 </div>
@@ -194,6 +190,24 @@
       <?php include 'includes/footer.php'; ?>
       </main>
 
-      
+      <script>
+        $(document).on('click', '#permissions', function() {
+            if ($('#permissions').val() == 2) {
+                $('#idNumber1').html('رقم الهوية');
+            }
+            else{
+                $('#idNumber1').html('السجل التجاري');
+
+            }
+        });
+        
+
+
+  
+
+  
+        </script>
    </body>
+
+
 </html>
