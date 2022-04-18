@@ -121,8 +121,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `fristName`, `lastName`, `Email`, `phoneNumber`, `password`, `permissions`) VALUES
-(1, 'علي', 'الخطيب', 'test1@gmail.com', '059123456789', '123456789', 1),
-(2, 'تامر', 'محسن', 'test2@gmail.com', '0548451263547', '123456789', 2);
+(1, 'بندر', 'الفرج', 'test1@gmail.com', '059123456789', '123456789', 1),
+(2, 'مهند', 'الغامدي', 'test2@gmail.com', '0548451263547', '123456789', 2);
 
 --
 -- Constraints for dumped tables
